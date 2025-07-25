@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Boston House Price Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <!-- CRIM -->
+  <label>Crime Rate:</label><br>
+  <select name="CRIM" required>
+    <option value="">Select...</option>
+    <option value="0.05">Very Low</option>
+    <option value="1.5">Low</option>
+    <option value="2.0">Moderate</option>
+    <option value="7.5">High</option>
+  </select><br><br>
+
+  <!-- ZN -->
+  <label>Zoning Type:</label><br>
+  <select name="ZN" required>
+    <option value="">Select...</option>
+    <option value="2.7">Affordable</option>
+    <option value="7">Costly</option>
+    <option value="15">Luxurious</option>
+    <option value="23">Ultra Luxurious</option>
+  </select><br><br>
+
+  <!-- INDUS -->
+  <label>Proportion of Industrial Area (INDUS):</label><br>
+  <input type="number" name="INDUS" step="0.01" required><br><br>
+
+  <!-- CHAS -->
+  <label>Is the house next to Charles River?</label><br>
+  <input type="radio" name="CHAS" value="1" required> Yes
+  <input type="radio" name="CHAS" value="0"> No<br><br>
+
+  <!-- NOX -->
+  <label>NOX Concentration (Air Pollution):</label><br>
+  <select name="NOX" required>
+    <option value="">Select...</option>
+    <option value="0.41">Very Low</option>
+    <option value="0.49">Low</option>
+    <option value="0.59">Moderate</option>
+    <option value="0.75">High</option>
+  </select><br><br>
+
+  <!-- RM -->
+  <label>Average Number of Rooms (RM):</label><br>
+  <input type="number" step="0.01" name="RM" required><br><br>
+
+  <!-- AGE -->
+  <label>Age of House (% built before 1940):</label><br>
+  <input type="number" step="0.1" name="Age" required><br><br>
+
+  <!-- DIS -->
+  <label>Distance to Employment Centers (1 to 15):</label><br>
+  <input type="number" step="0.1" name="DIS" min="1" max="15" required><br><br>
+
+  <!-- RAD -->
+  <label>Highway Access (RAD: 1 to 25):</label><br>
+  <input type="number" step="1" name="RAD" min="1" max="25" required><br><br>
+
+  <!-- TAX -->
+  <label>Property Tax:</label><br>
+  <select name="TAX" required>
+    <option value="">Select...</option>
+    <option value="291.6">Low</option>
+    <option value="396.2">Moderate</option>
+    <option value="500.8">High</option>
+    <option value="605.4">Ultra High</option>
+  </select><br><br>
+
+  <!-- PTRATIO -->
+  <label>Student-Teacher Ratio (5 to 25):</label><br>
+  <input type="number" step="0.1" name="PTRATIO" min="5" max="25" required><br><br>
+
+  <!-- B -->
+  <label>Is this a predominantly Black neighborhood?</label><br>
+  <input type="radio" name="B" value="1" required> Yes
+  <input type="radio" name="B" value="390"> No<br><br>
+
+  <!-- LSTAT -->
+  <label>% of Lower Status Population (LSTAT):</label><br>
+  <input type="number" step="0.1" name="LSTAT" required><br><br>
+
+  <!-- Submit -->
+  <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+</body>
+</html>
